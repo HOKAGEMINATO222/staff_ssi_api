@@ -38,4 +38,17 @@ const deleteStaff = async (req, res) => {
   }
 };
 
-module.exports = { addStaff, updateStaff, deleteStaff };
+// 🔵 Lấy tất cả nhân viên
+const getAllStaff = async (req, res) => {
+  try {
+    const staffs = await Staff.find().sort({ createdAt: -1 }); // sắp xếp mới nhất trước
+    res.status(200).json({ count: staffs.length, staffs });
+  } catch (error) {
+    res.status(500).json({
+      message: "Lỗi khi lấy danh sách nhân viên",
+      error: error.message,
+    });
+  }
+};
+
+module.exports = { addStaff, updateStaff, deleteStaff, getAllStaff };

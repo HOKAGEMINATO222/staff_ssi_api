@@ -6,6 +6,7 @@ const {
   addStaff,
   updateStaff,
   deleteStaff,
+  getAllStaff,
 } = require("../controllers/staffController");
 
 // POST /api/staff  → thêm mới
@@ -16,6 +17,8 @@ router.put("/:id", updateStaff);
 
 // DELETE /api/staff/:id → xóa
 router.delete("/:id", deleteStaff);
+
+router.get("/", getAllStaff);
 
 router.post("/import-excel", async (req, res) => {
   try {
