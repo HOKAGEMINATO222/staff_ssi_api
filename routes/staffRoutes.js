@@ -22,7 +22,7 @@ router.get("/", getAllStaff);
 
 router.post("/import-excel", async (req, res) => {
   try {
-    const { fileData, filename } = req.body;
+    const { filename, fileData } = req.body;
     if (!fileData) return res.status(400).json({ message: "Thiếu fileData" });
 
     // Giải mã file Excel từ base64
